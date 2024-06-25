@@ -4,8 +4,18 @@ import ErrorPage from "./pages/errorPage";
 import Navbar from "./pages/navbar";
 import ProfilePage from "./pages/profilePage";
 import AboutPage from "./pages/aboutPage";
+import LoginPage from "./pages/loginPage";
+import RegisterPage from "./pages/registerPage";
 
 const routes = createBrowserRouter([
+    {
+      path: '/login',
+      element: <LoginPage />
+    },
+    {
+      path: '/register',
+      element: <RegisterPage />
+    },
     {
       path: '/',
       element: <Navbar />,
