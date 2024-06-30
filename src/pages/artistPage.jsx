@@ -13,6 +13,8 @@ import {
   DialogContent,
   Avatar,
   Button,
+  TextField,
+  DialogActions,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Rating from "@mui/material/Rating";
@@ -35,7 +37,6 @@ import {
   pic16,
   pic17,
 } from "../assets";
-import { useNavigate } from "react-router-dom";
 
 changeTitle("Joy Art Gallery | Artist Profile");
 
@@ -87,10 +88,10 @@ const ArtDetailsContainer = styled(Box)({
   marginTop: "20px",
 });
 
-export default function ProfilePage() {
+export default function ArtistProfilePage() {
   const [open, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-  const navigate = useNavigate();
+  const [messageOpen, setMessageOpen] = useState(false);
 
   const handleClickOpen = (image) => {
     setSelectedImage(image);
@@ -100,6 +101,21 @@ export default function ProfilePage() {
   const handleClose = () => {
     setOpen(false);
     setSelectedImage(null);
+  };
+
+  const handleAddNewArt = () => {
+    // Navigate to the page for adding new arts
+    // Assuming you're using a router like react-router-dom
+    // history.push("/add-new-art");
+    console.log("Navigate to add new art page");
+  };
+
+  const handleMessageOpen = () => {
+    setMessageOpen(true);
+  };
+
+  const handleMessageClose = () => {
+    setMessageOpen(false);
   };
 
   return (
@@ -120,13 +136,9 @@ export default function ProfilePage() {
               <Typography variant="subtitle1" color="textSecondary" sx={{ mt: 1 }}>
                 Location: {artist.location}
               </Typography>
-              <Button
-                variant="contained"
-                color="primary"
-                sx={{ mt: 2 }}
-                onClick={() => navigate('/add-art')}
-              >
-                Add New Art
+              <Rating name="artist-rating" defaultValue={4} precision={0.5} sx={{ mt: 2 }} />
+              <Button variant="contained" color="primary" sx={{ mt: 2 }} onClick={handleMessageOpen}>
+                Message Artist
               </Button>
             </Box>
           </CardContent>
@@ -173,6 +185,45 @@ export default function ProfilePage() {
             />
           )}
         </DialogContent>
+      </Dialog>
+
+      <Dialog open={messageOpen} onClose={handleMessageClose} maxWidth="sm">
+        <DialogContent>
+          <Typography variant="h6" gutterBottom>
+            Message Artist
+          </Typography>
+          <TextField
+            margin="dense"
+            label="Your Name"
+            type="text"
+            fullWidth
+            variant="outlined"
+          />
+          <TextField
+            margin="dense"
+            label="Your Email"
+            type="email"
+            fullWidth
+            variant="outlined"
+          />
+          <TextField
+            margin="dense"
+            label="Message"
+            type="text"
+            fullWidth
+            multiline
+            rows={4}
+            variant="outlined"
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleMessageClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleMessageClose} color="primary">
+            Send
+          </Button>
+        </DialogActions>
       </Dialog>
     </Container>
   );

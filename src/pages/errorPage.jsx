@@ -17,7 +17,7 @@ export default function ErrorPage() {
         }}
     >
         <h3>Sorry, Page Doesn't Exist</h3>
-        <Link to='/home'>Go To Homepage</Link>
+        <Link to='/'>Go To Homepage</Link>
     </box>
   )
 }

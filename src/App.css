@@ -50,3 +50,16 @@ a.active {
 .login-page p, .register-page p {
   color: white;
 }
+
+.hover-expand:hover {
+  scale: 1.1;
+  background-image: linear-gradient(to bottom, white, black) !important;
+}
+
+a.active {
+  background-color: #6C10A5;
+}
+
+.active * {
+  color: #ffffff !important;
+}

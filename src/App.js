@@ -3,7 +3,7 @@ import './App.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import routes from './routes';
 import { ThemeProvider } from '@emotion/react';
-import darkTheme from './theme';
+import {darkTheme} from './theme';
 
 function App() {
   return (
